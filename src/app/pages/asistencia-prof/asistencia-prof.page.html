@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">ASISTENCIAS </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list lines="full">
+    <div *ngIf="cursosProfe && cursosProfe.length > 0; else sinCursos">
+      <div *ngFor="let curso of cursosProfe; let i = index">
+        <ion-item>
+          <ion-label>
+            <ion-accordion-group>
+              <ion-accordion value="first">
+                <ion-item slot="header" color="light">
+                  <ion-label>{{ curso.nomb_clase}}</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                  <ion-button (click)="ListaSesionXclase(curso)" expand="block">Ver asistencia <ion-icon slot="end" name="people"></ion-icon></ion-button>
+                </div>
+              </ion-accordion>
+            </ion-accordion-group>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+    
+  </ion-list>
+</ion-content>
+
+<ng-template #sinCursos>
+  <br>
+  <ion-text class="ion-padding"> No tienes cursos registrados aun </ion-text>
+</ng-template>
+

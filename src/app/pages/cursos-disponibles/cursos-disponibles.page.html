@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="cursos-alumno"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cursos Disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="cursos && cursos.length > 0; else sinCursos">
+    <div *ngFor="let curso of cursos; let i = index">
+      <ion-list [inset]="true">
+        <ion-item color="secondary">
+          <ion-label>{{ curso.nomb_clase }}</ion-label>
+          <ion-button size="large" (click)="mostrarAlerta(curso)">Unirse</ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #sinCursos>
+  <br>
+  <ion-text class="ion-padding">No hay cursos disponibles</ion-text>
+</ng-template>
+
+<ion-footer>
+  <ion-toolbar color="primary"></ion-toolbar>
+</ion-footer>

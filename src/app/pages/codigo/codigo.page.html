@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="lista"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Codigo de la clase</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true">
+
+  <ion-card-header>
+    <ion-card-title class="ion-text-center">CODIGO PARA SCANEAR LA CLASE </ion-card-title>
+  </ion-card-header>
+  <br>
+  <ion-card>
+    <div class="qr-container">
+      <qr-code [value]="this.QrSesion" size="260" errorCorrectionLevel="M" />
+    </div>
+  </ion-card>
+  
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+
+  </ion-toolbar>
+</ion-footer>

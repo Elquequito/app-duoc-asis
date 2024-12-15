@@ -1,0 +1,76 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="form-wrapper">
+    <ion-card class="login-card">
+
+      <ion-card-header>
+        <ion-card-title class="card-title">Registrarse</ion-card-title>
+      </ion-card-header>
+
+      <form #registroForm="ngForm" (ngSubmit)="registrar()">
+      
+        <ion-item>
+          <ion-label floating position="stacked">Correo</ion-label>
+          <ion-input required name="text" type="text" [(ngModel)]="usr.correo" ></ion-input>
+        </ion-item>
+
+        <div *ngIf="usr.correo && !obtenerRolPorCorreo(usr.correo)" class="error-message">
+          <ion-text color="primary">
+            La correo institucional debe ser:
+            <ul>
+              <li>Alumno : usuario&commat;alumno.cl</li>
+              <li>Docente : usuario&commat;docente.cl</li>
+            </ul>
+          </ion-text>
+        </div>
+        
+        <ion-item>
+          <ion-label floating position="stacked">Contraseña</ion-label>
+          <ion-input required name="password" type="password" [(ngModel)]="usr.password" 
+                     [pattern]="passwordPattern" minlength="6">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="usr.password && !passwordValid" class="error-message">
+          <ion-text color="primary">
+            La contraseña debe tener al menos:
+            <ul>
+              <li>6 caracteres.</li>
+              <li>Una letra mayúscula.</li>
+              <li>Un número.</li>
+              <li>Un carácter especial (por ejemplo: !, #, $ , _ , etc.).</li>
+            </ul>
+          </ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label floating position="stacked">Nombre</ion-label>
+          <ion-input required name="nombre" type="text" [(ngModel)]="usr.nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating position="stacked">Apellido</ion-label>
+          <ion-input required name="apellido" type="text" [(ngModel)]="usr.apellido"></ion-input>
+        </ion-item>
+
+        <ion-button expand="full" color="primary" type="submit" [disabled]="registroForm.invalid" class="ion-padding">
+          <ion-text color="light">Registrarse</ion-text>
+        </ion-button>
+
+        <ion-label class="ion-padding" text-center>
+          <ion-text routerLink="/login" color="primary">
+            ¿Ya tienes una cuenta? Inicia sesión aquí!
+          </ion-text>
+        </ion-label>
+      </form>
+      <br>
+    </ion-card>
+  </div>
+
+</ion-content>

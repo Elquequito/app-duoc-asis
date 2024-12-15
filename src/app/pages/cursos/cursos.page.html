@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">CURSOS </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Botón para agregar curso -->
+  <ion-button expand="block" class="boton ion-padding" routerLink="/agregar-clase">
+    Agregar Curso
+  </ion-button>
+
+  <ion-list [inset]="true">
+    <ion-title mode="md" class="ion-text-center">Listado de Cursos</ion-title>
+    <div *ngIf="cursosProfe && cursosProfe.length > 0; else sinCursos">
+      <div *ngFor="let curso of cursosProfe; let i = index">
+        
+        <ion-item class="item-boton">
+          <!-- Nombre de la clase -->
+          <ion-label>{{ curso.nomb_clase }}</ion-label>
+  
+          <!-- Botón con ícono de información al lado derecho -->
+          <ion-button fill="clear" slot="end" (click)="DetalleCurso(curso)" class="icono-info">
+            <ion-icon name="information-circle"></ion-icon>
+          </ion-button>
+        </ion-item>
+        
+      </div>
+    </div>
+  
+  </ion-list>
+  
+</ion-content>
+
+<ng-template #sinCursos>
+  <br>
+  <ion-text class="ion-padding"> No tienes cursos Registrados </ion-text>
+</ng-template>
+
+
